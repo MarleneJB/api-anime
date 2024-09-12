@@ -1,11 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { AnimeModule } from './anime/anime.module';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: `.env.${process.env.NODE_ENV}` 
+      envFilePath: `.env`, 
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -17,6 +18,7 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadEntities: true,
       synchronize: true, 
     }),
+    AnimeModule
   ],
 })
 export class AppModule {}
